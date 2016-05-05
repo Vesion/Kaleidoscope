@@ -7,7 +7,7 @@ int CurTok;
 int getNextToken() { return CurTok = gettok(); }
 
 // BinopPrecedence - This holds the precedence for each binary operator that is defined.
-std::unordered_map<char, int> BinopPrecedence;
+std::map<char, int> BinopPrecedence;
 
 // GetTokPrecedence - Get the precedence of the pending binary operator token.
 int GetTokPrecedence() {

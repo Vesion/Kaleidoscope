@@ -1,7 +1,7 @@
 #ifndef KAL_PARSER_H
 #define KAL_PARSER_H
 
-#include <unordered_map>
+#include <map>
 #include <cstdio>
 #include "token.h"
 #include "ast.h"
@@ -9,7 +9,7 @@
 extern int CurTok;
 extern int getNextToken();
 
-extern std::unordered_map<char, int> BinopPrecedence;
+extern std::map<char, int> BinopPrecedence;
 
 int GetTokPrecedence();
 
