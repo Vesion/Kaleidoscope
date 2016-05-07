@@ -5,11 +5,11 @@ LLVM_BUILD_PATH := $(LLVM_SRC_PATH)/bin
 LLVM_BIN_PATH := $(LLVM_SRC_PATH)/bin
 
 CXX := clang++
-CXXFLAGS := -fno-rtti -O0 -g -std=c++11
+CXXFLAGS := -fno-rtti -O3 -g -std=c++11
 PLUGIN_CXXFLAGS := -fpic
 
 LLVM_CXXFLAGS := `$(LLVM_BIN_PATH)/llvm-config --cxxflags`
-LLVM_LDFLAGS := `$(LLVM_BIN_PATH)/llvm-config --ldflags --libs --system-libs`
+LLVM_LDFLAGS := `$(LLVM_BIN_PATH)/llvm-config --ldflags --system-libs --libs core mcjit native`
 
 LLVM_LDFLAGS_NOLIBS := `$(LLVM_BIN_PATH)/llvm-config --ldflags`
 PLUGIN_LDFLAGS := -shared -Wl,-undefined,dynamic_lookup
@@ -55,13 +55,14 @@ SRC_CLANG_DIR := src_clang
 BUILDDIR := build
 
 
-INC_DIR := ../inc
-SRC_DIR := ./
-BIN := kal
+INC_DIR := ./include
+INC := -I $(INC_DIR)
+SRC_DIR := ./src
 SRC := $(wildcard $(SRC_DIR)/*.cc)
+BIN := kal
 
 all: $(SRC)
-	$(CXX) $(CXXFLAGS) $(LLVM_CXXFLAGS) $^ $(LLVM_LDFLAGS) -o $(BIN)
+	$(CXX) $(CXXFLAGS) $(LLVM_CXXFLAGS) $(INC) $^ $(LLVM_LDFLAGS) -o $(BIN)
 
 .PHONY: clean
 clean:
