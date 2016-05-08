@@ -1,5 +1,4 @@
 LLVM_SRC_PATH := $$HOME/Workspace/LLVM380
-LLVM_BUILD_PATH := $(LLVM_SRC_PATH)/bin
 LLVM_BIN_PATH := $(LLVM_SRC_PATH)/bin
 LLVM_CXXFLAGS := `$(LLVM_BIN_PATH)/llvm-config --cxxflags`
 LLVM_LDFLAGS := `$(LLVM_BIN_PATH)/llvm-config --ldflags --system-libs --libs core mcjit native`
