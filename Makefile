@@ -10,9 +10,14 @@ CXX := clang++
 CXXFLAGS := -fno-rtti -O3 -g -std=c++11 -I $(INC_PATH)
 
 SRC := $(wildcard $(SRC_PATH)/*.cc)
+JIT := $(SRC_PATH)/kaljit.cc
+DEBUG := $(SRC_PATH)/kaldebug.cc
 BIN := kal
 
-all: $(SRC)
+jit: $(JIT)
+	$(CXX) $(CXXFLAGS) $(LLVM_CXXFLAGS) $^ $(LLVM_LDFLAGS) -o $(BIN)
+
+debug: $(DEBUG)
 	$(CXX) $(CXXFLAGS) $(LLVM_CXXFLAGS) $^ $(LLVM_LDFLAGS) -o $(BIN)
 
 .PHONY: clean
