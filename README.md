@@ -20,7 +20,7 @@ Recomend dowload the [pre-built binaries LLVM](http://llvm.org/releases/download
 
 A consice `Makefile` is given to compile Kaleidoscope immediately. Just before, you should modify the `LLVM_SRC_PATH` variable to point to the correct direcoty LLVM lies in last step.
 
-After that, just make it fly:
+After done, let's make:
 
 ```shell
 $ make
