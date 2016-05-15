@@ -1,5 +1,5 @@
 # Kaleidoscope
-Kaleidoscope is a functioal toy language following the [LLVM tutorial](http://llvm.org/docs/tutorial/index.html). 
+Kaleidoscope is a functioal toy programming language following the [LLVM tutorial](http://llvm.org/docs/tutorial/index.html). 
 
 
 
