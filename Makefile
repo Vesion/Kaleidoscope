@@ -4,7 +4,7 @@ LLVM_SRC_PATH := $$HOME/Workspace/LLVM380
 
 LLVM_BIN_PATH := $(LLVM_SRC_PATH)/bin
 LLVM_CXXFLAGS := `$(LLVM_BIN_PATH)/llvm-config --cxxflags`
-LLVM_LDFLAGS := `$(LLVM_BIN_PATH)/llvm-config --ldflags --system-libs --libs core mcjit native`
+LLVM_LDFLAGS := `$(LLVM_BIN_PATH)/llvm-config --ldflags --system-libs --libs Analysis Core ExecutionEngine InstCombine Object RuntimeDyld ScalarOpts Support native`
 
 SRC_PATH := ./src
 
