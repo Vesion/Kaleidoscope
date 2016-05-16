@@ -1,5 +1,5 @@
 # Kaleidoscope
-Kaleidoscope is a functioal toy programming language following the [LLVM tutorial](http://llvm.org/docs/tutorial/index.html). 
+Kaleidoscope is a functioal toy language following the [LLVM tutorial](http://llvm.org/docs/tutorial/index.html). 
 
 
 
@@ -7,18 +7,17 @@ Kaleidoscope is a functioal toy programming language following the [LLVM tutoria
 
 ##### Requirements
 
-- Environment: OS X, Linux
-- Compiler: g++, clang
+- Compiler: g++ or clang
 - Libraries: LLVM 3.7 or later
 
 
 ##### LLVM Install
 
-Recomend dowload the [pre-built binaries LLVM](http://llvm.org/releases/download.html#3.8.0), rather than compiling it manually with source code. Untarred it into arbitrary directory ( e.g. `$HOME/workspace/LLVM380` ) after downloading.
+Recomend downloading the [pre-built binaries LLVM](http://llvm.org/releases/download.html#3.8.0), rather than building it manually with source code. After that, untarred it into arbitrary directory ( e.g. `$HOME/workspace/LLVM380` ).
 
 ##### Make
 
-A consice `Makefile` is given to compile Kaleidoscope immediately. Just before, you should modify the `LLVM_SRC_PATH` variable to point to the correct direcoty LLVM lies in last step.
+A consice `Makefile` is given to compile Kaleidoscope immediately. Just before, you ought to modify the `LLVM_SRC_PATH` variable to point to the correct direcoty LLVM lies in.
 
 After done, let's make:
 
@@ -69,17 +68,21 @@ define double @"unary!"(double %v) {
 ##### CFG
 
 ```
-kal ::= 'def' prototype expression
-		| 'extern' prototype
-		| expression | ';'
+kal ::= definition | declaration | toplevelexpr | ';'
+
+definition ::= 'def' prototype expression
+
+declaration ::= 'extern' prototype
+
+toplevelexpr ::= expression
 		
-prototype ::= id '(' [id [id ',']* ]* )'
+prototype ::= id '(' id* ')'
 			| 'binary' op number? '(' id ',' id ')'
 			| 'unary' op '(' id ')'
 
 expression ::= unary binary
 
-binary ::= [op unary]*
+binary ::= (op unary)*
 
 unary ::= primary | op unary
 
@@ -95,8 +98,8 @@ parenexpr ::= '(' expression ')'
 
 ifexpr ::= 'if' expression 'then' expression 'else' expression
 
-forexpr ::= 'for' id '=' expression ',' expression [',' expression]? 'in' expression
+forexpr ::= 'for' id '=' expression ',' expression (',' expression)? 'in' expression
 
-varexpr ::= 'var' id ['=' expression]? [',' id ['=' expression]?]* 'in' expression
+varexpr ::= 'var' id ('=' expression)? (',' id ('=' expression)?)* 'in' expression
 ```
 
